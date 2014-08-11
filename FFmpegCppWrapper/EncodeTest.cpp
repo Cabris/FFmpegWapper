@@ -80,12 +80,12 @@ namespace FFmpegCppWrapper
 		c->width = 1280;
 		c->height = 720;
 		/* frames per second */
-		//AVRational rate;  
-		//rate.num = 1;  
-		//rate.den = 25;  
-		//c->time_base = rate;
-		c->time_base.den = STREAM_FRAME_RATE;
-		c->time_base.num = 1;
+		AVRational rate;  
+		rate.num = 1;  
+		rate.den = STREAM_FRAME_RATE;  
+		c->time_base = rate;
+		//c->time_base.den = STREAM_FRAME_RATE;
+		//c->time_base.num = 1;
 		/* emit one intra frame every ten frames
 		* check frame pict_type before passing frame
 		* to encoder, if frame->pict_type is AV_PICTURE_TYPE_I
@@ -160,15 +160,16 @@ namespace FFmpegCppWrapper
 			}
 
 			if (got_output) {
-				printf("Write frame %3d (size=%5d)\n", frame->pts, pkt.size);
-				fwrite(pkt.data, 1, pkt.size, f);
+				int s=pkt.size;
+				printf("Write frame %3d (size=%7d)\n", frame->pts, s);
+				fwrite(pkt.data, 1, s, f);
 				av_free_packet(&pkt);
 			}
 			frame->pts++;
 		}
 
-		int i=frame->pts;
 		/* get the delayed frames */
+		/*int i=frame->pts;
 		for (got_output = 1; got_output; i++) {
 			fflush(stdout);
 
@@ -177,13 +178,12 @@ namespace FFmpegCppWrapper
 				fprintf(stderr, "Error encoding frame\n");
 				exit(1);
 			}
-
 			if (got_output) {
 				printf("Write frame %3d (size=%5d) delayed\n", i, pkt.size);
 				fwrite(pkt.data, 1, pkt.size, f);
 				av_free_packet(&pkt);
 			}
-		}
+		}*/
 
 		/* add sequence end code to have a real mpeg file */
 		fwrite(endcode, 1, sizeof(endcode), f);
