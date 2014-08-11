@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "EncoderH264.h"
-#include "VideoStream.cpp"
+#include "VideoStream.h"
 
 namespace FFmpegCppWrapper
 {
@@ -9,5 +9,5 @@ namespace FFmpegCppWrapper
 	extern "C" __declspec(dllexport) int encode(byte[] ,int,byte[] ,int*);
 	extern "C" __declspec(dllexport) void stopEncoder();
 
-	extern "C" __declspec(dllexport) void streamTest(int w,int h,int br);
+	//extern "C" __declspec(dllexport) void streamTest(int w,int h,int br);
 }

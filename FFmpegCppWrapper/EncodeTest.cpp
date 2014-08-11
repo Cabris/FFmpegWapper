@@ -57,8 +57,8 @@ namespace FFmpegCppWrapper
 		AVPacket pkt;
 		uint8_t endcode[] = { 0, 0, 1, 0xb7 };
 
+		
 		printf("Encode video file %s\n", filename);
-
 		/* find the mpeg1 video encoder */
 		codec = avcodec_find_encoder(codec_id);
 		if (!codec) {

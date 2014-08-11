@@ -1,4 +1,4 @@
-﻿Build started 2014/8/12 上午 02:42:35.
+﻿Build started 2014/8/12 上午 03:17:27.
      1>Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\FFmpegCppWrapper.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\FFmpegCppWrapper.lastbuildstate".
@@ -21,16 +21,13 @@
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(143): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(150): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(151): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(171): warning C4244: 'initializing' : conversion from 'int64_t' to 'int', possible loss of data
          EncoderH264.cpp
+     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(69): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
+     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(106): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
+     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(113): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
+     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(114): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
          Dllmain.cpp
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\videostream.cpp(83): warning C4996: 'AVStream::pts': was declared deprecated
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\libavformat\avformat.h(806) : see declaration of 'AVStream::pts'
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\videostream.cpp(108): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\videostream.cpp(186): warning C4996: 'avcodec_alloc_frame': was declared deprecated
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\libavcodec\avcodec.h(3536) : see declaration of 'avcodec_alloc_frame'
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\videostream.cpp(326): warning C4996: 'avcodec_encode_video': was declared deprecated
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\libavcodec\avcodec.h(4467) : see declaration of 'avcodec_encode_video'
          Generating Code...
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\FFmpegCppWrapper.dll.embed.manifest.res" Debug\FFmpegCppWrapper_manifest.rc 
@@ -64,4 +61,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.60
+Time Elapsed 00:00:01.48

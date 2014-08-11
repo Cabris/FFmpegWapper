@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>     // std::cin, std::cout
 #include "Dllmain.h"
+
 using namespace std;
 namespace FFmpegCppWrapper
 {
@@ -9,6 +10,7 @@ namespace FFmpegCppWrapper
 		encoder->setSrcSize(srcW,srcH);
 		encoder->setDecSize(decW,decH);
 		encoder->setBitrate(bitrate);
+		encoder->initialize();
 	}
 	int encode(byte src[],int src_size,byte dec[] ,int* dec_size){
 		if(encoder==NULL)
@@ -18,15 +20,16 @@ namespace FFmpegCppWrapper
 		}
 	}
 	void stopEncoder(){
+		encoder->free_stuff();
 		delete encoder;
 	}
 
-	void streamTest(int w,int h,int br){
+	/*void streamTest(int w,int h,int br){
 		VideoStream stream;
 		stream.width=w;
 		stream.height=h;
 		stream.bit_rate=br;
 		stream.testStream();
-	}
+	}*/
 
 }
