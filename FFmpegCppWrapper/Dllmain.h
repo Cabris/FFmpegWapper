@@ -5,7 +5,7 @@
 namespace FFmpegCppWrapper
 {
 	EncoderH264* encoder=NULL; 
-	extern "C" __declspec(dllexport) void startEncoder(int srcW,int srcH,int decW,int decH,int bitrate);
+	extern "C" __declspec(dllexport) void startEncoder(int srcW,int srcH,int decW,int decH,int bitrate,int framerate);
 	extern "C" __declspec(dllexport) int encode(byte[] ,int,byte[] ,int*);
 	extern "C" __declspec(dllexport) void stopEncoder();
 

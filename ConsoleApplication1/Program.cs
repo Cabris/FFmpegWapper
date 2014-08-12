@@ -4,19 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using System.IO;
+
 
 namespace ConsoleApplication1
 {
     class Program
     {
         [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void doTest();
-
-        //[DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
-        //private static extern void doTest2(IntPtr resP,out int resSize);
-
-        [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void startEncoder(int srcW, int srcH, int decW, int decH, int bitrate);
+        private static extern void startEncoder(int srcW, int srcH, int decW, int decH, int bitrate,int framerate);
 
         [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int encode(IntPtr resP, int res_size, IntPtr decP, out int dec_size);
@@ -24,54 +20,76 @@ namespace ConsoleApplication1
         [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void stopEncoder();
 
-        [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern void streamTest(int w, int h, int br);
-
         static void Main(string[] args)
         {
-            startEncoder(1920, 1080, 1280, 720, 400000);
-            byte[] res = new byte[5];
-            res[0] = Convert.ToByte('a');
-            res[1] = Convert.ToByte('b');
-            res[2] = Convert.ToByte('c');
-            res[3] = Convert.ToByte('d');
-            res[4] = Convert.ToByte('e');
-            IntPtr resP = Marshal.AllocHGlobal(res.Length);
-            Marshal.Copy(res, 0, resP, res.Length);
-            int res_size = res.Length;
+            int srcW = 1280, srcH = 720;
+            int decW = 1280, decH = 720;
+            int fps = 25;
+            int length = 10;
+            int fc = length * fps;
+            string path = @"MyTest_h264.mp4";
+            FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Write);
 
-            byte[] dec = new byte[5];
-            IntPtr decP = Marshal.AllocHGlobal(dec.Length);
-            Marshal.Copy(dec, 0, decP, dec.Length);
+            startEncoder(srcW, srcH, decW, decH, 800000, fps);
+
+            byte[] src = new byte[srcW * srcH*3];
+            int res_size = src.Length;
+            createDummyFrame(srcW, srcH, src, fc, 0);
+            IntPtr resP = Marshal.AllocHGlobal(res_size);
+            Marshal.Copy(src, 0, resP, res_size);
+           
+            byte[] dec = new byte[decW * decH*3/2];
             int dec_size = dec.Length;
+            IntPtr decP = Marshal.AllocHGlobal(dec_size);
+            Marshal.Copy(dec, 0, decP, dec_size);
 
-            if (encode(resP, res_size, decP, out dec_size) > 0)
-            {
-                byte[] data = new byte[dec_size];
-                Marshal.Copy(resP, data, 0, dec_size);
-                for (int i = 0; i < data.Length; i++)
-                    Console.WriteLine("data:" + Convert.ToChar(data[i]));
-            }
-            else
-            {
-                Console.WriteLine("encode fial");
-            }
-            stopEncoder();
-            Marshal.FreeHGlobal(resP);
-            Marshal.FreeHGlobal(decP);
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
-            streamTest(1280, 720, 1500000);
+            for (int c = 0; c < fc; c++)
+            {
+                createDummyFrame(srcW, srcH, src, fc, c);
+                Marshal.Copy(src, 0, resP, src.Length);
+                if (encode(resP, res_size, decP, out dec_size) > 0)
+                {
+                    Marshal.Copy(decP, dec, 0, dec_size);
+                    Console.WriteLine("Write frame {0,3} (size={1,7})**" , c, dec_size);
+                    fs.Write(dec, 0, dec_size);
+                }
+                else
+                {
+                    Console.WriteLine("encode fial");
+                }
+            }
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
+            stopEncoder();
             // Format and display the TimeSpan value.
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
             Console.WriteLine("RunTime " + elapsedTime);
-
             Console.WriteLine("press any key to exit");
+       
+            byte[] endcode = new byte[]{ 0, 0, 1, 0xb7 };
+            fs.Write(endcode, 0, endcode.Length);
+            fs.Close();
+            Marshal.FreeHGlobal(resP);
+            Marshal.FreeHGlobal(decP);
             Console.ReadKey(); //Pause
+        }
+
+        private static void createDummyFrame(int srcW, int srcH, byte[] src, int fc, int c)
+        {
+            int index = 0;
+            for (int y = 0; y < srcH; y++)
+            {
+                for (int x = 0; x < srcW; x++)
+                {
+                    src[index++] = (byte)(x + c * 255 / fc); // B
+                    src[index++] = (byte)(128 + y - c * 255 / fc); // G
+                    src[index++] = (byte)(64 - x + c * 255 / fc); // R
+                }
+            }
         }
     }
 }

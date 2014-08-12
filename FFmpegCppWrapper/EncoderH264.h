@@ -4,7 +4,7 @@
 
 namespace FFmpegCppWrapper
 {
-	typedef unsigned char byte;
+	typedef unsigned __int8 byte;
 	class EncoderH264
 	{
 	public:
@@ -13,19 +13,19 @@ namespace FFmpegCppWrapper
 		void setSrcSize(int w,int h);
 		void setDecSize(int w,int h);
 		void setBitrate(int b);
+		void setFramerate(int f);
 		void initialize();
 		int encode(byte[] ,int,byte[] ,int*);
 		void free_stuff();
-	private:
 		int srcW,srcH,decW,decH;
-		int bit_rate;
-		char *filename;
+		int bit_rate,frame_rate;
+	private:
 		AVCodecID codec_id;
-		AVCodec *codec;
 		AVCodecContext *c;
-		int ret, x, y, got_output;
-		FILE *f;
 		AVFrame *frame;
+		AVFrame *m_pRGBFrame;
+		uint8_t * rgb_buff;
+		SwsContext * scxt;
 		AVPacket pkt;
 	};
 

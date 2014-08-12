@@ -5,11 +5,12 @@
 using namespace std;
 namespace FFmpegCppWrapper
 {
-	void startEncoder(int srcW,int srcH,int decW,int decH,int bitrate){
+	void startEncoder(int srcW,int srcH,int decW,int decH,int bitrate,int framerate){
 		encoder=new EncoderH264();
 		encoder->setSrcSize(srcW,srcH);
 		encoder->setDecSize(decW,decH);
 		encoder->setBitrate(bitrate);
+		encoder->setFramerate(framerate);
 		encoder->initialize();
 	}
 	int encode(byte src[],int src_size,byte dec[] ,int* dec_size){

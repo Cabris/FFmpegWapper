@@ -1,4 +1,4 @@
-﻿Build started 2014/8/12 上午 03:17:27.
+﻿Build started 2014/8/13 上午 04:45:44.
      1>Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\FFmpegCppWrapper.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\FFmpegCppWrapper.lastbuildstate".
@@ -22,11 +22,7 @@
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(150): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(151): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
          EncoderH264.cpp
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(69): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-                 c:\program files (x86)\microsoft visual studio 10.0\vc\include\stdio.h(234) : see declaration of 'fopen'
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(106): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(113): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(114): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
+     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(116): warning C4244: 'initializing' : conversion from 'int64_t' to 'long', possible loss of data
          Dllmain.cpp
          Generating Code...
        ManifestResourceCompile:
@@ -61,4 +57,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.48
+Time Elapsed 00:00:01.62

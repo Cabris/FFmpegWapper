@@ -6,7 +6,7 @@
 #include "PreDefind.h"
 namespace FFmpegCppWrapper
 {
-#define STREAM_DURATION   5.0/* 5 seconds stream duration */
+#define STREAM_DURATION   1.0/* 5 seconds stream duration */
 #define STREAM_FRAME_RATE 30 /* 25 images/s */
 #define STREAM_NB_FRAMES  ((int)(STREAM_DURATION * STREAM_FRAME_RATE))
 #define STREAM_PIX_FMT PIX_FMT_YUV420P /* default pix_fmt */
