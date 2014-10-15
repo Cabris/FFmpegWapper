@@ -4,7 +4,7 @@
 
 namespace FFmpegCppWrapper
 {
-	typedef unsigned __int8 byte;
+	
 	class EncoderH264
 	{
 	public:

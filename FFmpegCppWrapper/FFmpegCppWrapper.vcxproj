@@ -11,17 +11,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DecoderH264.cpp" />
     <ClCompile Include="Dllmain.cpp" />
     <ClCompile Include="EncoderH264.cpp" />
     <ClCompile Include="EncodeTest.cpp" />
     <ClCompile Include="VideoStream.cpp" />
     <ClCompile Include="VideoStream.h" />
+    <ClCompile Include="VideoStream2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DecoderH264.h" />
     <ClInclude Include="Dllmain.h" />
     <ClInclude Include="EncoderH264.h" />
     <ClInclude Include="EncodeTest.h" />
     <ClInclude Include="PreDefind.h" />
+    <ClInclude Include="VideoStream2.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.txt" />
@@ -75,6 +79,7 @@
       <AdditionalDependencies>avcodec.lib;avdevice.lib;avfilter.lib;avformat.lib;avutil.lib;postproc.lib;swresample.lib;swscale.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>C:\Users\Cabris\Downloads\ffmpeg-20140806-git-305f72a-win32-dev\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

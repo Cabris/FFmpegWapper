@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.IO;
-
+using System.Threading;
 
 namespace ConsoleApplication1
 {
@@ -20,12 +19,45 @@ namespace ConsoleApplication1
         [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void stopEncoder();
 
+        [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void startDecoder(int width, int height);
+
+        [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern int decode(IntPtr resP, int res_size, IntPtr decP, out int dec_size);
+
+        [DllImport("FFmpegCppWrapper.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void stopDecoder();
+
+        Timer t;
+
+      public  void Start()
+        {
+            t = new Timer(new TimerCallback(Send2));
+            t.Change(0, 1000 / 60);
+        }
+
+      public void Stop()
+      {
+            t.Change(Timeout.Infinite,Timeout.Infinite);
+            t.Dispose();
+        }
+
+        void Send2(object s)
+        {
+            Console.WriteLine("s");
+        }
+
         static void Main(string[] args)
         {
+            Program p = new Program();
+            p.Start();
+            Console.ReadKey(); //Pause
+            p.Stop();
+            return;
             int srcW = 1280, srcH = 720;
             int decW = 1280, decH = 720;
-            int fps = 25;
-            int length = 10;
+            int fps = 30;
+            int length = 1;
             int fc = length * fps;
             string path = @"MyTest_h264.mp4";
             FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.Write);
@@ -54,6 +86,7 @@ namespace ConsoleApplication1
                     Marshal.Copy(decP, dec, 0, dec_size);
                     Console.WriteLine("Write frame {0,3} (size={1,7})**" , c, dec_size);
                     fs.Write(dec, 0, dec_size);
+                    createTempFrameFile("f_"+c+".txt",dec,dec_size);
                 }
                 else
                 {
@@ -76,6 +109,12 @@ namespace ConsoleApplication1
             Marshal.FreeHGlobal(resP);
             Marshal.FreeHGlobal(decP);
             Console.ReadKey(); //Pause
+        }
+
+        private static void createTempFrameFile(string fileName,byte[] data,int size) {
+            FileStream fs = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.Write);
+            fs.Write(data, 0, size);
+            fs.Close();
         }
 
         private static void createDummyFrame(int srcW, int srcH, byte[] src, int fc, int c)

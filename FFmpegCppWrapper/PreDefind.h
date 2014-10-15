@@ -5,7 +5,7 @@
 #ifndef __STDC_FORMAT_MACROS
 #define __STDC_FORMAT_MACROS
 #endif
-
+typedef unsigned __int8 byte;
 extern "C" 
 {
 #include <stdint.h>

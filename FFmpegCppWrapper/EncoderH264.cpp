@@ -58,9 +58,9 @@ namespace FFmpegCppWrapper
 		rate.num = 1;  
 		rate.den = frame_rate;  
 		c->time_base = rate;
-		c->gop_size = 15;
+		c->gop_size = 12;
 		c->pix_fmt = AV_PIX_FMT_YUV420P;
-
+		//c->max_b_frames=5;
 		/*if (codec_id == AV_CODEC_ID_H264)
 			av_opt_set(c->priv_data, "preset", "slow", 0);*/
 
@@ -95,13 +95,21 @@ namespace FFmpegCppWrapper
 		scxt = sws_getContext(srcW,srcH,PIX_FMT_BGR24,c->width,c->height,PIX_FMT_YUV420P,SWS_POINT,NULL,NULL,NULL);  
 	}
 
-	int EncoderH264::encode(byte src[],int src_size,byte dec[],int* dec_size){
+	int EncoderH264::encode(byte src[],int src_size,byte enc[],int* enc_size){
 		int ret, got_output;
 		av_init_packet(&pkt);
 		pkt.data = NULL;    // packet data will be allocated by the encoder
 		pkt.size = 0;
 		memcpy(rgb_buff,src,src_size);  
-		avpicture_fill((AVPicture*)m_pRGBFrame, (uint8_t*)rgb_buff, PIX_FMT_BGR24, srcW, srcH);  
+		avpicture_fill((AVPicture*)m_pRGBFrame, (uint8_t*)rgb_buff, PIX_FMT_BGR24, srcW, srcH);
+
+		m_pRGBFrame->data[0]  += m_pRGBFrame->linesize[0] * (srcH - 1);  
+		m_pRGBFrame->linesize[0] *= -1;                     
+		m_pRGBFrame->data[1]  += m_pRGBFrame->linesize[1] * (srcH / 2 - 1);  
+		m_pRGBFrame->linesize[1] *= -1;  
+		m_pRGBFrame->data[2]  += m_pRGBFrame->linesize[2] * (srcH / 2 - 1);  
+		m_pRGBFrame->linesize[2] *= -1;  
+
 		sws_scale(scxt,m_pRGBFrame->data,m_pRGBFrame->linesize,0,srcH,frame->data,frame->linesize); 
 
 		/* encode the image */
@@ -112,9 +120,12 @@ namespace FFmpegCppWrapper
 		}
 
 		if (got_output) {
-			*dec_size=pkt.size;
+			*enc_size=pkt.size;
 			long c=frame->pts;
-			memcpy(dec,pkt.data,*dec_size); 
+			if(frame->pts==0){//may contain useless data
+			
+			}
+			memcpy(enc,pkt.data,*enc_size); 
 			//printf("Write frame %3d (size=%7d)\n",c, *dec_size);
 			av_free_packet(&pkt);
 		}
@@ -124,11 +135,11 @@ namespace FFmpegCppWrapper
 
 	void EncoderH264::free_stuff(){
 		avcodec_close(c);
-		sws_freeContext(scxt);
 		av_free(c);
 		av_freep(&frame->data[0]);
 		av_frame_free(&frame);
 		av_frame_free(&m_pRGBFrame);
+		sws_freeContext(scxt);
 		delete []rgb_buff; 
 		printf("\n");
 	}
