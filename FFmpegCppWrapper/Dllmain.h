@@ -3,6 +3,7 @@
 #include "DecoderH264.h"
 #include "VideoStream2.h"
 
+
 namespace FFmpegCppWrapper
 {
 	EncoderH264* encoder=NULL; 
