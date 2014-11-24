@@ -89,10 +89,10 @@ namespace FFmpegCppWrapper
 			fprintf(stderr, "Could not allocate raw picture buffer\n");
 			exit(1);
 		}
-		int size = srcW*srcH*3; 
+		int size = srcW*srcH*4; 
 		rgb_buff = new uint8_t[size];
 		//ªì©l¤ÆSwsContext 
-		scxt = sws_getContext(srcW,srcH,PIX_FMT_BGR24,c->width,c->height,PIX_FMT_YUV420P,SWS_POINT,NULL,NULL,NULL);  
+		scxt = sws_getContext(srcW,srcH,PIX_FMT_RGBA ,c->width,c->height,PIX_FMT_YUV420P,SWS_POINT,NULL,NULL,NULL);  
 	}
 
 	int EncoderH264::encode(byte src[],int src_size,byte enc[],int* enc_size){
@@ -101,7 +101,7 @@ namespace FFmpegCppWrapper
 		pkt.data = NULL;    // packet data will be allocated by the encoder
 		pkt.size = 0;
 		memcpy(rgb_buff,src,src_size);  
-		avpicture_fill((AVPicture*)m_pRGBFrame, (uint8_t*)rgb_buff, PIX_FMT_BGR24, srcW, srcH);
+		avpicture_fill((AVPicture*)m_pRGBFrame, (uint8_t*)rgb_buff, PIX_FMT_RGBA , srcW, srcH);
 
 		m_pRGBFrame->data[0]  += m_pRGBFrame->linesize[0] * (srcH - 1);  
 		m_pRGBFrame->linesize[0] *= -1;                     

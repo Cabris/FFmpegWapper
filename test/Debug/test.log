@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿Build started 2014/11/19 上午 01:49:32.
+=======
+﻿Build started 2014/11/24 下午 04:47:56.
+>>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
      1>Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\test\test.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\test.lastbuildstate".
@@ -19,13 +23,16 @@
      1>c:\users\cabris\documents\github\ffmpegwapper\test\colorgen.cpp(26): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
      1>c:\users\cabris\documents\github\ffmpegwapper\test\colorgen.cpp(27): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
          Generating Code...
+<<<<<<< HEAD
        ManifestResourceCompile:
          C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\test.exe.embed.manifest.res" Debug\test_manifest.rc 
+=======
+>>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\test.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.lib" /MACHINE:X86 Debug\test.exe.embed.manifest.res
-         Debug\ColorGen.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\test.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.lib" /MACHINE:X86 Debug\ColorGen.obj
          Debug\stdafx.obj
          Debug\test.obj
+<<<<<<< HEAD
          C:\Users\Cabris\Documents\GitHub\FFmpegWapper\build\Debug\FFmpegCppWrapper.lib
        Manifest:
          Deleting file "Debug\test.exe.embed.manifest".
@@ -37,7 +44,13 @@
          Debug\stdafx.obj
          Debug\test.obj
          C:\Users\Cabris\Documents\GitHub\FFmpegWapper\build\Debug\FFmpegCppWrapper.lib
+=======
+         C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\FFmpegCppWrapper.lib
+     1>ColorGen.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/INCREMENTAL:NO' specification
+>>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
          test.vcxproj -> C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\test.exe;#1" /manifest Debug\test.exe.intermediate.manifest
        FinalizeBuildStatus:
          Deleting file "Debug\test.unsuccessfulbuild".
          Touching "Debug\test.lastbuildstate".
@@ -45,4 +58,8 @@
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:01.36
+=======
+Time Elapsed 00:00:01.06
+>>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
