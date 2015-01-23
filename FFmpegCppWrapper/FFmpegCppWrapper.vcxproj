@@ -60,13 +60,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-<<<<<<< HEAD
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)build/$(Configuration)\</OutDir>
-    <IntDir>build/$(Configuration)\</IntDir>
-=======
     <LinkIncremental>false</LinkIncremental>
->>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
