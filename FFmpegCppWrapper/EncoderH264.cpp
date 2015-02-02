@@ -45,11 +45,15 @@ namespace FFmpegCppWrapper
 			fprintf(stderr, "Could not allocate video codec context\n");
 			exit(1);
 		}
-		av_opt_set(c->priv_data, "preset", "superfast", 0); 
+		av_opt_set(c->priv_data, "preset", "ultrafast", 0); 
 		av_opt_set(c->priv_data, "tune", "zerolatency", 0);
 
 		/* put sample parameters */
 		c->bit_rate = bit_rate;
+		c->rc_max_rate = 4000000;
+		c->rc_min_rate = 4000000;
+		c->rc_buffer_size = 5000000;
+
 		/* resolution must be a multiple of two */
 		c->width = decW;
 		c->height = decH;
@@ -60,6 +64,8 @@ namespace FFmpegCppWrapper
 		c->time_base = rate;
 		c->gop_size = 12;
 		c->pix_fmt = AV_PIX_FMT_YUV420P;
+		c->trellis=0;
+		c->thread_count=3;
 		//c->max_b_frames=5;
 		/*if (codec_id == AV_CODEC_ID_H264)
 			av_opt_set(c->priv_data, "preset", "slow", 0);*/

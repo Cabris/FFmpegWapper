@@ -12,3 +12,4 @@ C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\ConsoleApplication1.pdb
 >>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.exe
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.pdb
+C:\Users\Cabris\Documents\GitHub\FFmpegWapper\ConsoleApplication1\obj\x86\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache

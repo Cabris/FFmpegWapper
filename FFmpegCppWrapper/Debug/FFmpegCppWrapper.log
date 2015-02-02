@@ -1,9 +1,9 @@
-﻿Build started 2014/11/24 下午 09:02:59.
+﻿Build started 2015/2/3 上午 03:17:07.
      1>Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\FFmpegCppWrapper.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\FFmpegCppWrapper.lastbuildstate".
        InitializeBuildStatus:
-         Touching "Debug\FFmpegCppWrapper.unsuccessfulbuild".
+         Creating "Debug\FFmpegCppWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MYWIN32CPPDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DecoderH264.cpp Dllmain.cpp EncoderH264.cpp EncodeTest.cpp VideoStream.cpp VideoStream.h VideoStream2.cpp
          VideoStream2.cpp
@@ -30,7 +30,7 @@
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(150): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encodetest.cpp(151): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
          EncoderH264.cpp
-     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(124): warning C4244: 'initializing' : conversion from 'int64_t' to 'long', possible loss of data
+     1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\encoderh264.cpp(130): warning C4244: 'initializing' : conversion from 'int64_t' to 'long', possible loss of data
          Dllmain.cpp
          DecoderH264.cpp
      1>c:\users\cabris\documents\github\ffmpegwapper\ffmpegcppwrapper\decoderh264.cpp(32): warning C4996: 'avcodec_alloc_frame': was declared deprecated
@@ -57,4 +57,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:03.05
+Time Elapsed 00:00:01.63

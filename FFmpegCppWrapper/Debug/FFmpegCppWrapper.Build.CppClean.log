@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
->>>>>>> 1ca26d747652394af2cd1ac5c92174d9e2ad6822
 C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\DEBUG\FFMPEGCPPWRAPPER.DLL
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\FFmpegCppWrapper.exp
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\FFmpegCppWrapper.lib
-C:\Users\Cabris\Documents\GitHub\FFmpegWapper\Debug\FFmpegCppWrapper.pdb
+C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\DEBUG\FFMPEGCPPWRAPPER.PDB
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\cl.command.1.tlog
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\CL.read.1.tlog
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\CL.write.1.tlog
@@ -12,9 +9,7 @@ C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\DECODERH264
 C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\DLLMAIN.OBJ
 C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\ENCODERH264.OBJ
 C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\ENCODETEST.OBJ
-C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\FFmpegCppWrapper.dll.embed.manifest
-C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\FFmpegCppWrapper.dll.embed.manifest.res
-C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\FFmpegCppWrapper.dll.intermediate.manifest
+C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\FFMPEGCPPWRAPPER.DLL.INTERMEDIATE.MANIFEST
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\FFmpegCppWrapper.write.1.tlog
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\link.command.1.tlog
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\link.read.1.tlog
@@ -22,7 +17,6 @@ C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\link.write.
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\mt.command.1.tlog
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\mt.read.1.tlog
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\mt.write.1.tlog
-C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\RENDERINGPLUGIN.OBJ
 C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\Debug\vc100.idb
 C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\VC100.PDB
 C:\USERS\CABRIS\DOCUMENTS\GITHUB\FFMPEGWAPPER\FFMPEGCPPWRAPPER\DEBUG\VIDEOSTREAM.OBJ
