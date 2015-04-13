@@ -25,30 +25,30 @@ namespace FFmpegCppWrapper
 		delete encoder;
 	}
 
-	void startDecoder(int srcW,int srcH){
-		decoder=new DecoderH264();
-		decoder->width=srcW;
-		decoder->height=srcH;
-		decoder->initialize();
-	}
-	int decode(byte src[],int src_size,byte dec[] ,int* dec_size){
-		if(decoder==NULL)
-			return -1;
-		else{
-			return decoder->decode(src,src_size,dec,dec_size);
-		}
-	}
-	void stopDecoder(){
-		decoder->free_stuff();
-		delete decoder;
-	}
+	//void startDecoder(int srcW,int srcH){
+	//	decoder=new DecoderH264();
+	//	decoder->width=srcW;
+	//	decoder->height=srcH;
+	//	decoder->initialize();
+	//}
+	//int decode(byte src[],int src_size,byte dec[] ,int* dec_size){
+	//	if(decoder==NULL)
+	//		return -1;
+	//	else{
+	//		return decoder->decode(src,src_size,dec,dec_size);
+	//	}
+	//}
+	//void stopDecoder(){
+	//	decoder->free_stuff();
+	//	delete decoder;
+	//}
 
-	void streamTest(int w,int h,int br){
-		VideoStream2 stream;
-		stream.width=w;
-		stream.height=h;
-		stream.bit_rate=br;
-		stream.testStream();
-	}
+	//void streamTest(int w,int h,int br){
+	//	VideoStream2 stream;
+	//	stream.width=w;
+	//	stream.height=h;
+	//	stream.bit_rate=br;
+	//	stream.testStream();
+	//}
 
 }

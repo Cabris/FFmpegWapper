@@ -7,4 +7,8 @@
     <string name="default_ip">192.168.137.1</string>
 	<string name="default_port">8888</string>
 	<string name="Connect">Connect</string>
+	<string-array name="video_types">
+	    <item>with camera</item>
+        <item>without camera</item>
+	</string-array>
 </resources>

@@ -1,5 +1,6 @@
 package com.myapp.h264streamingviwer;
 
+import android.R.integer;
 import android.R.string;
 import android.app.Activity;
 import android.app.Fragment;
@@ -11,8 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.h264streamingviwer.R;
@@ -25,7 +29,10 @@ class ConnectionFragment extends Fragment implements OnClickListener {
 	EditText ipAddressText;
 	EditText portText;
 	IOnConnectedListener connectedListener;
-
+    Spinner typeSpinner;
+	String layoutType;
+	String port2Str="8887";
+	
 	public ConnectionFragment() {
 	}
 
@@ -38,11 +45,13 @@ class ConnectionFragment extends Fragment implements OnClickListener {
 	@Override
 	public void onActivityCreated(final Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		typeSpinner=(Spinner) getView().findViewById(R.id.typeSpinner);
 		ipAddressText = (EditText) getView().findViewById(R.id.ip_editText);
 		portText = (EditText) getView().findViewById(R.id.port_editText);
 		Button connectButton = (Button) getView().findViewById(R.id.connect_button);
 		Button scanButton = (Button) getView().findViewById(R.id.scan);
 		connectButton.setOnClickListener(this);
+		typeSpinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 		scanButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -78,10 +87,13 @@ class ConnectionFragment extends Fragment implements OnClickListener {
 	                String contents = intent.getStringExtra("SCAN_RESULT");
 	                //TextView textView1 = (TextView) findViewById(R.id.textView1);
 	                String[] data= contents.split(":");
-	                if(data.length==2){
+	                if(data.length==3){
 	                	ipAddressText.setText(data[0]);
 	                	portText.setText(data[1]);
-	                }
+	                	port2Str=data[2];
+	                }else {
+		                Toast.makeText(getActivity(), "未知的格式", Toast.LENGTH_LONG).show();
+					}
 	            }
 	        else
 	            if(resultCode==Activity.RESULT_CANCELED) 
@@ -95,15 +107,16 @@ class ConnectionFragment extends Fragment implements OnClickListener {
 	public void onClick(View v) {
 		String adrs = ipAddressText.getText().toString();
 		//adrs = "192.168.1.47";
-		int port = Integer.parseInt(portText.getText().toString());
-		port = 8888;
+		int port1 = Integer.parseInt(portText.getText().toString());
+		int port2=Integer.parseInt(port2Str);
+		//port = 8888;
 
-		sender = new MessageSender(adrs, 8887);
+		sender = new MessageSender(adrs, port2);
 		sClient = new SensorClient(getActivity(), sender);
-		sClient.onStart();
 		sender.connect();
+		sClient.onStart();
 		if(connectedListener!=null)
-			connectedListener.onConnected(adrs, port);
+			connectedListener.onConnected(adrs, port1);
 	}
 
 	public void setConnectedListener(IOnConnectedListener connectedListener) {
@@ -118,6 +131,28 @@ class ConnectionFragment extends Fragment implements OnClickListener {
 			sClient.onStop();
 		if (sender != null)
 			sender.onStop();
+	}
+	
+	class CustomOnItemSelectedListener implements OnItemSelectedListener {
+		 
+	    public void onItemSelected(AdapterView<?> parent, View view, int pos,
+	            long id) {
+	    	layoutType=parent.getItemAtPosition(pos).toString();
+	        Toast.makeText(parent.getContext(), 
+	                "On Item Select : \n" + layoutType,
+	                Toast.LENGTH_SHORT).show();
+	    }
+	 
+	    @Override
+	    public void onNothingSelected(AdapterView<?> arg0) {
+	        // TODO Auto-generated method stub
+	 
+	    }
+	 
+	}
+
+	public String getLayoutType() {
+		return layoutType;
 	}
 
 }

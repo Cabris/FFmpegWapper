@@ -62,7 +62,8 @@ public class MessageSender {
 						String dataString= queue.poll()+"\n";
 						outputWriter.write(dataString);
 						outputWriter.flush();
-						log.info("outputWriter: " +dataString);
+						queue.clear();
+						//log.info("outputWriter: " +dataString);
 					 }
 	            }
 	            

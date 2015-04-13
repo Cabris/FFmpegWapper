@@ -1,0 +1,5 @@
+c:\users\cabris\documents\visual studio 2010\Projects\StreamingDemo\StreamingDemo\bin\Debug\StreamingDemo.exe
+c:\users\cabris\documents\visual studio 2010\Projects\StreamingDemo\StreamingDemo\bin\Debug\StreamingDemo.pdb
+c:\users\cabris\documents\visual studio 2010\Projects\StreamingDemo\StreamingDemo\obj\x86\Debug\StreamingDemo.exe
+c:\users\cabris\documents\visual studio 2010\Projects\StreamingDemo\StreamingDemo\obj\x86\Debug\StreamingDemo.pdb
+C:\Users\Cabris\Documents\visual studio 2010\Projects\StreamingDemo\StreamingDemo\obj\x86\Debug\StreamingDemo.csprojResolveAssemblyReference.cache

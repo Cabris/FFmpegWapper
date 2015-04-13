@@ -27,8 +27,8 @@ public class StreamReceiver extends StreamSource {
 	protected int currentLength = 0;
 	int maxBufferSize = 10000000;
 
-	private static Logger log = Logger
-			.getLogger(StreamReceiver.class.getName());
+//	private static Logger log = Logger
+//			.getLogger(StreamReceiver.class.getName());
 
 	public StreamReceiver(String ip, int port) {
 		this.ipAddress = ip;
@@ -61,8 +61,8 @@ public class StreamReceiver extends StreamSource {
 			if (bytesRead > 0) {
 				lengthBuffer.put(lengthData, 0, bytesRead);
 				haveRead += bytesRead;
-				log.info("fill targetLength: " + haveRead + "/" + 4 + ",try: "
-						+ tryCount);
+//				log.info("fill targetLength: " + haveRead + "/" + 4 + ",try: "
+//						+ tryCount);
 			}
 			if (haveRead == lengthData.length)
 				break;
@@ -71,7 +71,7 @@ public class StreamReceiver extends StreamSource {
 		lengthBuffer.flip();
 		lengthBuffer.get(lengthData);
 		targetLength = BitConverter2.toInt(lengthData);
-		log.info("update targetLength: " + targetLength);
+//		log.info("update targetLength: " + targetLength);
 		if (targetLength < 0)
 			throw new Exception("negi length");
 	}
@@ -88,14 +88,14 @@ public class StreamReceiver extends StreamSource {
 			if (bytesRead > 0) {
 				frameBuffer.put(fillInBuffer, 0, bytesRead);
 				currentLength += bytesRead;
-				log.info("fill:" + currentLength + "/" + targetLength
-						+ ",try: " + tryCount);
+//				log.info("fill:" + currentLength + "/" + targetLength
+//						+ ",try: " + tryCount);
 			}
 			if (currentLength == targetLength)
 				break;
 			tryCount++;
 		}
-		log.info("fill finished:" + currentLength + "/" + targetLength);
+//		log.info("fill finished:" + currentLength + "/" + targetLength);
 		byte[] data = new byte[targetLength];
 		frameBuffer.flip();
 		frameBuffer.get(data);

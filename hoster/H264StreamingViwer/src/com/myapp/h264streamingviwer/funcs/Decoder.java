@@ -51,7 +51,7 @@ public class Decoder {
 		public void run() {
 			MediaFormat format = new MediaFormat();
 			format.setString(MediaFormat.KEY_MIME, "video/avc");
-			format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 2000000);
+			format.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 0);
 			format.setInteger(MediaFormat.KEY_WIDTH, 1280);
 			format.setInteger(MediaFormat.KEY_HEIGHT, 720);
 			format.setInteger(MediaFormat.KEY_MAX_WIDTH, 1280);
@@ -104,10 +104,10 @@ public class Decoder {
 							MediaFormat format1 = decoder.getOutputFormat();
 							int width = format1.getInteger(MediaFormat.KEY_WIDTH);
 							int height = format1.getInteger(MediaFormat.KEY_HEIGHT);
-							videoSize.handleVideoSize(width, height);
+							//videoSize.handleVideoSize(width, height);
 							break;
 						case MediaCodec.INFO_TRY_AGAIN_LATER:
-							// Log.d("DecodeActivity", "dequeueOutputBuffer timed out!");
+							 Log.d("DecodeActivity", "dequeueOutputBuffer timed out!");
 							break;
 						default:
 							// ByteBuffer buffer = outputBuffers[outIndex];
@@ -147,7 +147,7 @@ public class Decoder {
 			byte[] sampleData = inputStream.getQueue().poll();
 			buffer.clear();
 			buffer.put(sampleData);
-			// Log.d("DecodeActivity", "readSampleData");
+			Log.d("Decoder", "readSampleData");
 			Log.d("Decoder", "size=" + inputStream.getQueue().size());
 			return sampleData.length;
 		}

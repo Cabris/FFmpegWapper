@@ -1,9 +1,9 @@
-﻿Build started 2015/2/3 上午 03:17:07.
+﻿Build started 2015/4/11 下午 11:51:29.
      1>Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\FFmpegCppWrapper.vcxproj" on node 2 (rebuild target(s)).
      1>_PrepareForClean:
          Deleting file "Debug\FFmpegCppWrapper.lastbuildstate".
        InitializeBuildStatus:
-         Creating "Debug\FFmpegCppWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Debug\FFmpegCppWrapper.unsuccessfulbuild".
        ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MYWIN32CPPDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt DecoderH264.cpp Dllmain.cpp EncoderH264.cpp EncodeTest.cpp VideoStream.cpp VideoStream.h VideoStream2.cpp
          VideoStream2.cpp
@@ -57,4 +57,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.63
+Time Elapsed 00:00:01.76

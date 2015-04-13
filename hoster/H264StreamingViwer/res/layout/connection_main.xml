@@ -39,6 +39,14 @@
        android:layout_height="match_parent"
        android:layout_weight="7" >
 
+       <Spinner
+           android:id="@+id/typeSpinner"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="5"
+           android:entries="@array/video_types"
+           android:prompt="@array/video_types" />
+
        <Button
            android:id="@+id/connect_button"
            android:layout_width="fill_parent"

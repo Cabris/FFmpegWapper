@@ -18,11 +18,11 @@ import android.view.ViewGroup;
 
 public class VideoFragment extends Fragment implements SurfaceHolder.Callback, IHandleVideoSize{
 
-	String ip;
-	int port;
-	Decoder decoder;
-	StreamReceiver receiver;
-	private SurfaceHolder holder;
+	protected String ip;
+	protected int port;
+	protected Decoder decoder;
+	protected StreamReceiver receiver;
+	protected SurfaceHolder holder;
 	
 
 	public VideoFragment(String ip, int port) {
@@ -39,12 +39,16 @@ public class VideoFragment extends Fragment implements SurfaceHolder.Callback, I
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		SurfaceView surfaceView = (SurfaceView) getView().findViewById(R.id.surface);
-		holder=surfaceView.getHolder();
-		holder.addCallback(this);
+		createVideoHolder();
 		receiver = new StreamReceiver(ip, port);
 		decoder = new Decoder(receiver);
 		decoder.videoSize=this;
+	}
+
+	protected void createVideoHolder() {
+		SurfaceView surfaceView = (SurfaceView) getView().findViewById(R.id.surface);
+		holder=surfaceView.getHolder();
+		holder.addCallback(this);
 	}
 
 	@Override
@@ -108,6 +112,5 @@ public class VideoFragment extends Fragment implements SurfaceHolder.Callback, I
 				surfaceView.setLayoutParams(lp);
 			}
 		};
-		// mainHandler.post(runnable);
 	}
 }
