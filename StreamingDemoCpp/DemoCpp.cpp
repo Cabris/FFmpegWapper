@@ -9,13 +9,13 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	FILE *f;
 
-	char *filename="doTest.mp4";
+	/*char *filename="doTest.mp4";
 		printf("Encode video file %s\n", filename);
 		f = fopen(filename, "wb");
 		if (!f) {
 			fprintf(stderr, "Could not open %s\n", filename);
 			exit(1);
-		}
+		}*/
 
 	StreamTcpServer server;
 
@@ -25,13 +25,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	int length=10;
 	EncoderH264 encoder(srcW,srcH,decW,decH,800000,fps);
 
-	int src_size=srcW*srcH*4;
+	int src_size=srcW*srcH*4;//rgba
 	byte *src=new byte[src_size];
-	int dec_size=decW*decH*3/2;
+
+	int dec_size=decW*decH*3/2;//yuv
 	byte *dec=new byte[dec_size];
 
 	int fc=length*fps;
 	for(int c=0;c<fc;c++){
+		
+		////test frame///////
 		byte *_src=src;
 		for(int y = 0; y < srcH; y++) {  
 			for(int x = 0; x < srcW; x++) {
@@ -41,14 +44,16 @@ int _tmain(int argc, _TCHAR* argv[])
 				*_src++ = (byte)(255); // A
 			}
 		}
+		/////////////////////
+
 		encoder.Encoding(src,src_size,dec,&dec_size);
 		server.Send(dec,dec_size);
 		//fwrite(dec, 1, dec_size, f);
 	}
 
-	byte endcode[] = { 0, 0, 1, 0xb7 };
+	/*byte endcode[] = { 0, 0, 1, 0xb7 };
 	fwrite(endcode, 1, sizeof(endcode), f);
-	fclose(f);
+	fclose(f);*/
 
 	delete []src;
 	delete []dec;

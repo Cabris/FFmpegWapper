@@ -4,11 +4,11 @@
 //
 
 #pragma once
-#include <WinSock2.h>
+#include <WinSock2.h>//
 #include "targetver.h"
 #include <stdio.h>
 #include <tchar.h>
-typedef unsigned __int8 byte;
+typedef unsigned __int8 byte;//
 
 
 // TODO: reference additional headers your program requires here
