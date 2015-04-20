@@ -1,0 +1,57 @@
+﻿Build started 2015/4/20 下午 06:05:56.
+     1>Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\FFmpegCppWrapper.vcxproj" on node 2 (rebuild target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Debug\FFmpegCppWrapper.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /Od /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D MYWIN32CPPDLL_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc100.pdb" /Gd /TP /errorReport:prompt DecoderH264.cpp Dllmain.cpp EncoderH264.cpp EncodeTest.cpp VideoStream.cpp VideoStream.h VideoStream2.cpp
+         VideoStream2.cpp
+     1>VideoStream2.cpp(82): warning C4996: 'AVStream::pts': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavformat/avformat.h(861) : see declaration of 'AVStream::pts'
+     1>VideoStream2.cpp(107): warning C4018: '<' : signed/unsigned mismatch
+     1>VideoStream2.cpp(185): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavcodec/avcodec.h(3630) : see declaration of 'avcodec_alloc_frame'
+     1>VideoStream2.cpp(325): warning C4996: 'avcodec_encode_video': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavcodec/avcodec.h(4597) : see declaration of 'avcodec_encode_video'
+         VideoStream.h
+         VideoStream.cpp
+     1>VideoStream.cpp(83): warning C4996: 'AVStream::pts': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavformat/avformat.h(861) : see declaration of 'AVStream::pts'
+     1>VideoStream.cpp(108): warning C4018: '<' : signed/unsigned mismatch
+     1>VideoStream.cpp(186): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavcodec/avcodec.h(3630) : see declaration of 'avcodec_alloc_frame'
+     1>VideoStream.cpp(326): warning C4996: 'avcodec_encode_video': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavcodec/avcodec.h(4597) : see declaration of 'avcodec_encode_video'
+         EncodeTest.cpp
+     1>EncodeTest.cpp(108): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(234) : see declaration of 'fopen'
+     1>EncodeTest.cpp(143): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
+     1>EncodeTest.cpp(150): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
+     1>EncodeTest.cpp(151): warning C4244: '=' : conversion from 'int64_t' to 'uint8_t', possible loss of data
+         EncoderH264.cpp
+     1>EncoderH264.cpp(130): warning C4244: 'initializing' : conversion from 'int64_t' to 'long', possible loss of data
+         Dllmain.cpp
+         DecoderH264.cpp
+     1>DecoderH264.cpp(32): warning C4996: 'avcodec_alloc_frame': was declared deprecated
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\libavcodec/avcodec.h(3630) : see declaration of 'avcodec_alloc_frame'
+         Generating Code...
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\Cabris\Downloads\ffmpeg-20150420-git-82d9c4e-win64-dev" avcodec.lib avdevice.lib avfilter.lib avformat.lib avutil.lib postproc.lib swresample.lib swscale.lib opengl32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Debug\FFmpegCppWrapper.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.lib" /MACHINE:X64 /DLL x64\Debug\DecoderH264.obj
+         x64\Debug\Dllmain.obj
+         x64\Debug\EncoderH264.obj
+         x64\Debug\EncodeTest.obj
+         x64\Debug\VideoStream.obj
+         x64\Debug\VideoStream.obj
+         x64\Debug\VideoStream2.obj
+     1>x64\Debug\VideoStream.obj : warning LNK4042: object specified more than once; extras ignored
+            Creating library C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.lib and object C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.exp
+         FFmpegCppWrapper.vcxproj -> C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\Cabris\Documents\GitHub\FFmpegWapper\x64\Debug\FFmpegCppWrapper.dll;#2" /manifest x64\Debug\FFmpegCppWrapper.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Debug\FFmpegCppWrapper.unsuccessfulbuild".
+         Touching "x64\Debug\FFmpegCppWrapper.lastbuildstate".
+     1>Done Building Project "C:\Users\Cabris\Documents\GitHub\FFmpegWapper\FFmpegCppWrapper\FFmpegCppWrapper.vcxproj" (rebuild target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.84
