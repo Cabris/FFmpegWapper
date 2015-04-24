@@ -1,4 +1,5 @@
 #include "EncoderH264.h"
+#include <windows.h>
 //#include "VideoStream.h"
 namespace FFmpegCppWrapper
 {
@@ -49,10 +50,10 @@ namespace FFmpegCppWrapper
 		av_opt_set(c->priv_data, "tune", "zerolatency", 0);
 
 		/* put sample parameters */
-		c->bit_rate = bit_rate;
-		c->rc_max_rate = 4000000;
-		c->rc_min_rate = 4000000;
-		c->rc_buffer_size = 5000000;
+		//c->bit_rate = bit_rate;
+		//c->rc_max_rate = 4000000;
+		//c->rc_min_rate = 4000000;
+		//c->rc_buffer_size = 5000000;
 
 		/* resolution must be a multiple of two */
 		c->width = decW;
@@ -61,11 +62,11 @@ namespace FFmpegCppWrapper
 		AVRational rate;  
 		rate.num = 1;  
 		rate.den = frame_rate;  
-		c->time_base = rate;
-		c->gop_size = 12;
+		//c->time_base = rate;
+		c->gop_size = 15;
 		c->pix_fmt = AV_PIX_FMT_YUV420P;
 		c->trellis=0;
-		c->thread_count=3;
+		//c->thread_count=6;
 		//c->max_b_frames=5;
 		/*if (codec_id == AV_CODEC_ID_H264)
 			av_opt_set(c->priv_data, "preset", "slow", 0);*/
@@ -99,15 +100,20 @@ namespace FFmpegCppWrapper
 		rgb_buff = new uint8_t[size];
 		//ªì©l¤ÆSwsContext 
 		scxt = sws_getContext(srcW,srcH,PIX_FMT_RGBA ,c->width,c->height,PIX_FMT_YUV420P,SWS_POINT,NULL,NULL,NULL);  
+		av_init_packet(&pkt);////
 	}
 
 	int EncoderH264::encode(byte src[],int src_size,byte enc[],int* enc_size){
+		
 		int ret, got_output;
-		av_init_packet(&pkt);
+		//av_init_packet(&pkt);////
 		pkt.data = NULL;    // packet data will be allocated by the encoder
 		pkt.size = 0;
-		memcpy(rgb_buff,src,src_size);  
-		avpicture_fill((AVPicture*)m_pRGBFrame, (uint8_t*)rgb_buff, PIX_FMT_RGBA , srcW, srcH);
+		//memcpy(rgb_buff,src,src_size);  
+		
+		DWORD dw1 = GetTickCount();
+		
+		avpicture_fill((AVPicture*)m_pRGBFrame, (uint8_t*)src, PIX_FMT_RGBA , srcW, srcH);
 
 		m_pRGBFrame->data[0]  += m_pRGBFrame->linesize[0] * (srcH - 1);  
 		m_pRGBFrame->linesize[0] *= -1;                     
@@ -116,14 +122,17 @@ namespace FFmpegCppWrapper
 		m_pRGBFrame->data[2]  += m_pRGBFrame->linesize[2] * (srcH / 2 - 1);  
 		m_pRGBFrame->linesize[2] *= -1;  
 
-		sws_scale(scxt,m_pRGBFrame->data,m_pRGBFrame->linesize,0,srcH,frame->data,frame->linesize); 
+		sws_scale(scxt,m_pRGBFrame->data,m_pRGBFrame->linesize,0,srcH,frame->data,frame->linesize); ///!
 
 		/* encode the image */
-		ret = avcodec_encode_video2(c, &pkt, frame, &got_output);
+		ret = avcodec_encode_video2(c, &pkt, frame, &got_output);///!
 		if (ret < 0) {
 			fprintf(stderr, "Error encoding frame\n");
 			exit(1);
 		}
+
+		DWORD dw2 = GetTickCount();
+		printf("time elapsed: %d\n", (dw2-dw1));
 
 		if (got_output) {
 			*enc_size=pkt.size;
@@ -133,13 +142,16 @@ namespace FFmpegCppWrapper
 			}
 			memcpy(enc,pkt.data,*enc_size); 
 			//printf("Write frame %3d (size=%7d)\n",c, *dec_size);
-			av_free_packet(&pkt);
+			//av_free_packet(&pkt);////
 		}
+
+		
 		frame->pts++;
 		return 1;
 	}
 
 	void EncoderH264::free_stuff(){
+		av_free_packet(&pkt);////
 		avcodec_close(c);
 		av_free(c);
 		av_freep(&frame->data[0]);

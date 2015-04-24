@@ -5,7 +5,7 @@
 #include "Dllmain.h"
 #include "ColorGen.h"
 #include <stdlib.h>
-
+#include <windows.h>
 using namespace FFmpegCppWrapper;
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -18,13 +18,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		fprintf(stderr, "Could not open %s\n", filename);
 		exit(1);
 	}
-	int srcW=1024,srcH=1024;
-	int decW=1024,decH=1024;
-	int fps=30;
-	int length=5;
-	//FFmpegCppWrapper::streamTest(srcW,srcH,800000);
-	FFmpegCppWrapper::startEncoder(srcW,srcH,decW,decH,8000000,fps);
-	//FFmpegCppWrapper::startDecoder(decW,decH);
+	int srcW=1920,srcH=1080;
+	int decW=900,decH=600;
+	int fps=60;
+	int length=10;
+
+	FFmpegCppWrapper::startEncoder(srcW,srcH,decW,decH,50000000,fps);
 
 	int src_size=srcW*srcH*4;
 	byte *src=new byte[src_size];
@@ -63,9 +62,11 @@ int _tmain(int argc, _TCHAR* argv[])
 			}
 		}
 		//cg.P+=0.1f;
+		//DWORD dw1 = GetTickCount();
 		FFmpegCppWrapper::encode(src,src_size,dec,&dec_size);
+		//DWORD dw2 = GetTickCount();
+		//printf("Write frame %3d (size=%7d), time elapsed: %d\n",c, dec_size, (dw2-dw1));
 		fwrite(dec, 1, dec_size, f);
-		printf("Write frame %3d (size=%7d)\n",c, dec_size);
 		//FFmpegCppWrapper::decode(dec,dec_size,dec_out,&dec_out_size);
 		//printf("saving frame, size=  %3d**\n", dec_size);
 
